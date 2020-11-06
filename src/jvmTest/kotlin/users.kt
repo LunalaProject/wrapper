@@ -1,7 +1,23 @@
+import com.gabriel.lunala.project.LunalaWrapper
 import com.gabriel.lunala.project.entity.User
 import com.gabriel.lunala.project.entity.UserCreateDTO
 import com.gabriel.lunala.project.entity.UserUpdateDTO
 import com.gabriel.lunala.project.service.UserService
+import com.gabriel.lunala.project.util.prepareClient
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import org.junit.jupiter.api.Test
+
+class OperationsTest {
+
+    @Test
+    suspend fun `test operations`() {
+        operate(UserService(LunalaWrapper("http://localhost:8080/api", "key", client = HttpClient(CIO.create()) {
+            prepareClient()
+        })))
+    }
+
+}
 
 suspend fun operate(service: UserService) {
     create(service) {
