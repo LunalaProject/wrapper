@@ -6,8 +6,6 @@ import com.gabriel.lunala.project.entity.UserCreateDTO
 import com.gabriel.lunala.project.entity.UserUpdateDTO
 import io.ktor.client.request.*
 import io.ktor.http.*
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 class UserService(private val wrapper: LunalaWrapper, private val route: String = "${wrapper.url}/users") {
 
@@ -36,5 +34,4 @@ class UserService(private val wrapper: LunalaWrapper, private val route: String 
         headers.append("Content-Type", contentType)
         headers.append(HttpHeaders.Authorization, wrapper.key)
     }
-
 }

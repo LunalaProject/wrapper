@@ -6,11 +6,13 @@ import com.gabriel.lunala.project.service.UserService
 import com.gabriel.lunala.project.util.prepareClient
 import io.ktor.client.*
 import io.ktor.client.engine.cio.*
+import io.ktor.util.*
 import org.junit.jupiter.api.Test
 
 class OperationsTest {
 
     @Test
+    @KtorExperimentalAPI
     suspend fun `test operations`() {
         operate(UserService(LunalaWrapper("http://localhost:8080/api", "key", client = HttpClient(CIO.create()) {
             prepareClient()
