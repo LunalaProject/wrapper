@@ -14,9 +14,7 @@ class OperationsTest {
     @Test
     @KtorExperimentalAPI
     suspend fun `test operations`() {
-        operate(UserService(LunalaWrapper("http://localhost:8080/api", "key", client = HttpClient(CIO.create()) {
-            prepareClient()
-        })))
+        operate(UserService(LunalaWrapper("http://localhost:8080/api", "key", client = HttpClient(CIO.create())).prepareClient()))
     }
 
 }
@@ -47,3 +45,5 @@ suspend fun get(service: UserService, block: User.() -> Unit) =
 
 suspend fun delete(service: UserService, id: Long = 1, block: Long.() -> Unit) =
     service.delete(id).also { block(id) }
+
+suspend fun main() = OperationsTest().`test operations`()
