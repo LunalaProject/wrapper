@@ -1,5 +1,5 @@
 plugins {
-    maven
+    `maven-publish`
     kotlin("multiplatform") version "1.4.10"
     kotlin("plugin.serialization") version "1.4.10"
 }
@@ -7,7 +7,7 @@ plugins {
 group = "com.gabriel.lunala.project"
 version = "1.0"
 
-plugins.apply("maven")
+plugins.apply("maven-publish")
 
 repositories {
     mavenCentral()
