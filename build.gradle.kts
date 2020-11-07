@@ -3,8 +3,11 @@ plugins {
     kotlin("multiplatform") version "1.4.10"
     kotlin("plugin.serialization") version "1.4.10"
 }
+
 group = "com.gabriel.lunala.project"
 version = "1.0"
+
+plugins.apply("maven")
 
 repositories {
     mavenCentral()
