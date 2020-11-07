@@ -29,8 +29,6 @@ jobs:
        name: Wrapper
        path: build/libs/
 
-    - name: Automatic Releases
-      uses: marvinpinto/action-automatic-releases@v1.1.0
   pre-release:
     name: "Pre Release"
     runs-on: "ubuntu-latest"
