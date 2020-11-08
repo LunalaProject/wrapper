@@ -42,8 +42,10 @@ suspend fun create(service: GuildService, block: Guild.() -> Unit) =
 suspend fun update(service: GuildService, block: Guild.() -> Unit) =
     service.update(1, GuildUpdateDTO(locale = "pt-br")).also(block)
 
-suspend fun get(service: GuildService, block: Guild.() -> Unit) =
+suspend fun get(service: GuildService, block: Guild?.() -> Unit) =
     service.retrieve(1).also(block)
 
 suspend fun delete(service: GuildService, id: Long = 1, block: Long.() -> Unit) =
     service.delete(id).also { block(id) }
+
+suspend fun main() = GuildOperationsTest().`test operations`()

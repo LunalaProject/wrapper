@@ -43,7 +43,7 @@ suspend fun create(service: UserService, block: User.() -> Unit) =
 suspend fun update(service: UserService, block: User.() -> Unit) =
     service.update(1, UserUpdateDTO(coins = 20)).also(block)
 
-suspend fun get(service: UserService, block: User.() -> Unit) =
+suspend fun get(service: UserService, block: User?.() -> Unit) =
     service.retrieve(1).also(block)
 
 suspend fun delete(service: UserService, id: Long = 1, block: Long.() -> Unit) =

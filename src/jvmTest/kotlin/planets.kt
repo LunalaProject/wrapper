@@ -42,7 +42,7 @@ suspend fun create(service: PlanetService, block: Planet.() -> Unit) =
 suspend fun update(service: PlanetService, block: Planet.() -> Unit) =
     service.update("Earth", PlanetUpdateDTO(owner = 360162870069166080)).also(block)
 
-suspend fun get(service: PlanetService, block: Planet.() -> Unit) =
+suspend fun get(service: PlanetService, block: Planet?.() -> Unit) =
     service.retrieve("Earth").also(block)
 
 suspend fun delete(service: PlanetService, id: String = "Earth", block: String.() -> Unit) =

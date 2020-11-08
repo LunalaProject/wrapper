@@ -4,6 +4,7 @@ import com.gabriel.lunala.project.LunalaWrapper
 import com.gabriel.lunala.project.entity.Planet
 import com.gabriel.lunala.project.entity.PlanetCreateDTO
 import com.gabriel.lunala.project.entity.PlanetUpdateDTO
+import com.gabriel.lunala.project.util.nullableCall
 import io.ktor.client.request.*
 import io.ktor.http.*
 
@@ -16,7 +17,7 @@ class PlanetService(private val wrapper: LunalaWrapper, private val endpoint: St
         body = create
     }
 
-    suspend fun retrieve(id: String) = wrapper.client.get<Planet>("$endpoint/$id") {
+    suspend fun retrieve(id: String) = nullableCall<Planet>(wrapper.client, "$endpoint/$id") {
         header(HttpHeaders.Authorization, wrapper.key)
         header("Content-Type", "application/json; charset=utf-8")
     }

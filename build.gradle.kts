@@ -46,7 +46,6 @@ kotlin {
             }
             dependencies {
                 implementation("io.ktor:ktor-client-core:1.4.1")
-                implementation("io.ktor:ktor-client-core:1.4.1")
                 implementation("io.ktor:ktor-client-serialization:1.4.1")
                 implementation("io.github.microutils:kotlin-logging:1.12.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.0-RC2")

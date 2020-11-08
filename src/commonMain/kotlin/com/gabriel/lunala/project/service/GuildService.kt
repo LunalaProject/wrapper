@@ -4,6 +4,7 @@ import com.gabriel.lunala.project.LunalaWrapper
 import com.gabriel.lunala.project.entity.Guild
 import com.gabriel.lunala.project.entity.GuildCreateDTO
 import com.gabriel.lunala.project.entity.GuildUpdateDTO
+import com.gabriel.lunala.project.util.nullableCall
 import io.ktor.client.request.*
 import io.ktor.http.*
 
@@ -16,7 +17,7 @@ class GuildService(private val wrapper: LunalaWrapper, private val endpoint: Str
         body = create
     }
 
-    suspend fun retrieve(id: Long) = wrapper.client.get<Guild>("$endpoint/$id") {
+    suspend fun retrieve(id: Long) = nullableCall<Guild>(wrapper.client, "$endpoint/$id") {
         header(HttpHeaders.Authorization, wrapper.key)
         header("Content-Type", "application/json; charset=utf-8")
     }
