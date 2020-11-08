@@ -8,28 +8,28 @@ import com.gabriel.lunala.project.util.Default
 import io.ktor.client.request.*
 import io.ktor.http.*
 
-class UserService(private val wrapper: LunalaWrapper, private val route: String = "${wrapper.url}/users") {
+class UserService(private val wrapper: LunalaWrapper, private val endpoint: String = "${wrapper.url}/users") {
 
-    suspend fun create(create: UserCreateDTO) = wrapper.client.post<User>(route) {
+    suspend fun create(create: UserCreateDTO) = wrapper.client.post<User>(endpoint) {
         header(HttpHeaders.Authorization, wrapper.key)
         header(HttpHeaders.ContentType, ContentType.Application.Default)
 
         body = create
     }
 
-    suspend fun retrieve(id: Long) = wrapper.client.get<User>("$route/$id") {
+    suspend fun retrieve(id: Long) = wrapper.client.get<User>("$endpoint/$id") {
         header(HttpHeaders.Authorization, wrapper.key)
         header(HttpHeaders.ContentType, ContentType.Application.Default)
     }
 
-    suspend fun update(id: Long, update: UserUpdateDTO): User = wrapper.client.put("$route/$id") {
+    suspend fun update(id: Long, update: UserUpdateDTO): User = wrapper.client.put("$endpoint/$id") {
         header(HttpHeaders.Authorization, wrapper.key)
         header(HttpHeaders.ContentType, ContentType.Application.Default)
 
         body = update
     }
 
-    suspend fun delete(id: Long) = wrapper.client.delete<HttpStatusCode>("$route/$id") {
+    suspend fun delete(id: Long) = wrapper.client.delete<HttpStatusCode>("$endpoint/$id") {
         header(HttpHeaders.Authorization, wrapper.key)
         header(HttpHeaders.ContentType, ContentType.Application.Default)
     }
